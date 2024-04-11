@@ -13,5 +13,7 @@ export class ShoppingListComponent {
     new Ingredient('Sugar', 200, 'mg')
   ];
 
-
+  addIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
 }
