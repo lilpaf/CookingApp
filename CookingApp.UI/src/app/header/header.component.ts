@@ -1,27 +1,28 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: 'header.component.html',
-    styleUrl: './header.component.css'
+  selector: 'app-header',
+  templateUrl: 'header.component.html',
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-    collapsed = false;
-    private showShoopingList = false;
-    @Output('shoopingListClicked') showShoopingListEmitter = new EventEmitter<boolean>();
-    
-    ngOnInit(): void {
-        console.log(this.showShoopingList);
-        //this.showShoopingListEmitter.emit(this.showShoopingList);
-    }
+  collapsed = false;
+  private showShoopingList = false;
+  @Output('shoopingListClicked') showShoopingListEmitter =
+    new EventEmitter<boolean>();
 
-    onShopingListClicked() {
-        this.showShoopingList = true;
-        this.showShoopingListEmitter.emit(this.showShoopingList);
-    }
+  ngOnInit(): void {
+    console.log(this.showShoopingList);
+    //this.showShoopingListEmitter.emit(this.showShoopingList);
+  }
 
-    onRecepiesClicked() {
-        this.showShoopingList = false;
-        this.showShoopingListEmitter.emit(this.showShoopingList);
-    }
+  onShoppingListClicked() {
+    this.showShoopingList = true;
+    this.showShoopingListEmitter.emit(this.showShoopingList);
+  }
+
+  onRecipesClicked() {
+    this.showShoopingList = false;
+    this.showShoopingListEmitter.emit(this.showShoopingList);
+  }
 }
