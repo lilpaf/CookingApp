@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
     new EventEmitter<boolean>();
 
   ngOnInit(): void {
-    console.log(this.showShoopingList);
     //this.showShoopingListEmitter.emit(this.showShoopingList);
   }
 

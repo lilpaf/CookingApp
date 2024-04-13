@@ -10,7 +10,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipesComponent as RecipesComponent } from './recipes/recipes.component';
 import { FormsModule } from '@angular/forms';
-import { DropDownDirective } from './shared/directive/dropdown.directive';
+import { DropDownDirective } from './shared/directives/dropdown.directive';
 
 @NgModule({
   declarations: [

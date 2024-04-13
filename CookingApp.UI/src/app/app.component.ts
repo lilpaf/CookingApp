@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  @Input() showShoopingList: boolean;
+  @Input() showShoppingList: boolean;
 
   onShoopingListClicked(show: boolean) {
-    this.showShoopingList = show;
+    this.showShoppingList = show;
   }
 }
