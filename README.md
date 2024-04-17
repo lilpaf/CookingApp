@@ -1,1 +1,2 @@
 # CookingApp
+Angular course app
