@@ -1,0 +1,20 @@
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.btn-success {
+  margin-right: 10px;
+}
+
+.form-buttons {
+  margin-bottom: 10px;
+}
+
+.ingredient-button {
+  margin-top: 24px;
+}
+
+.ingredients {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}

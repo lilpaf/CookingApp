@@ -9,12 +9,12 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipesComponent as RecipesComponent } from './recipes/recipes.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropDownDirective } from './shared/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { NumberValidatorDirective } from './shared/directives/validators/number.validator.directive';
+import { NumberValidatorDirective } from './shared/validators/number.validator.directive';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { NumberValidatorDirective } from './shared/directives/validators/number.
     RecipeEditComponent,
     NumberValidatorDirective,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

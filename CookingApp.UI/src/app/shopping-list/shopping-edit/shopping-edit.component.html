@@ -51,10 +51,19 @@
             type="submit"
             [disabled]="shoppingForm.invalid"
           >
-            Add
+            {{ editMode ? "Edit" : "Add" }}
           </button>
-          <button class="btn btn-danger" type="button">Delete</button>
-          <button class="btn btn-primary" type="button">Clear</button>
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDelete()"
+            *ngIf="editMode"
+          >
+            Delete
+          </button>
+          <button class="btn btn-primary" type="button" (click)="onClear()">
+            Clear
+          </button>
         </div>
       </div>
     </form>
