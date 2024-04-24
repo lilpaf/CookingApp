@@ -1,26 +1,38 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ingredient } from '../../shared/models/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrl: './shopping-edit.component.css',
 })
-export class ShoppingListEditComponent {
-  @ViewChild('nameInput') nameInputRef: ElementRef;
-  @ViewChild('amountInput') amountInputRef: ElementRef;
-  @ViewChild('unitInput') unitInputRef: ElementRef;
+export class ShoppingListEditComponent implements OnInit {
+  ingredient = new Ingredient(null, null, null);
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      const id = params['id'];
+      if (id !== undefined) {
+        this.ingredient = this.shoppingListService.getIngredient(+id);
+      }
+    });
+  }
 
-  onAddClicked() {
-    const name: string = this.nameInputRef.nativeElement.value;
-    const amount: number = this.amountInputRef.nativeElement.value;
-    const unit: string = this.unitInputRef.nativeElement.value;
-
-    const ingredient = new Ingredient(name, amount, unit);
-
-    this.shoppingListService.addIngredient(ingredient);
+  onSubmit(form: NgForm) {
+    const value = form.value;
+    const ingredientToAdd = new Ingredient(
+      value.name,
+      value.amount,
+      value.unit
+    );
+    this.shoppingListService.addIngredient(ingredientToAdd);
+    form.reset();
   }
 }

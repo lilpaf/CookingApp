@@ -18,6 +18,11 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
+  getIngredient(index: number) {
+    const ingredient = this.ingredients[index]; 
+    return ingredient;
+  }
+
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.next(this.getIngredients());

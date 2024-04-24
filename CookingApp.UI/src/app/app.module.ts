@@ -14,6 +14,7 @@ import { DropDownDirective } from './shared/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { NumberValidatorDirective } from './shared/directives/validators/number.validator.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     DropDownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
+    NumberValidatorDirective,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],

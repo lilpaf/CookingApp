@@ -1,44 +1,62 @@
 <div class="row">
-    <div class="col-xs-12">
-        <form>
-            <div class="row">
-                <div class="col-sm-5 form-group">
-                    <label for="name">Name</label>
-                    <input 
-                        #nameInput
-                        type="text" 
-                        id="name" 
-                        class="form-control">
-                </div>
-                <div class="col-sm-2 form-group">
-                    <label for="amount">Amount</label>
-                    <input 
-                        #amountInput
-                        type="number" 
-                        id="amount" 
-                        class="form-control">
-                </div>
-                <div class="col-sm-2 form-group">
-                    <label for="unit">Unit (optional)</label>
-                    <input 
-                        #unitInput
-                        type="text"
-                        id="unit" 
-                        class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button 
-                        class="btn btn-success" 
-                        type="submit" 
-                        (click)="onAddClicked()">
-                        Add
-                    </button>
-                    <button class="btn btn-danger" type="button">Delete</button>
-                    <button class="btn btn-primary" type="button">Clear</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="col-xs-12">
+    <form #shoppingForm="ngForm" (ngSubmit)="onSubmit(shoppingForm)">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            [(ngModel)]="ingredient.name"
+            required
+            #name="ngModel"
+          />
+          <span class="help-block" *ngIf="name.touched && name.invalid"
+            >Name is required</span
+          >
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            name="amount"
+            id="amount"
+            class="form-control"
+            [(ngModel)]="ingredient.amount"
+            required
+            #amount="ngModel"
+            numberValidator
+          />
+          <span class="help-block" *ngIf="amount.touched && amount.invalid"
+            >Amount is required and must be positive number</span
+          >
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="unit">Unit (optional)</label>
+          <input
+            type="text"
+            name="unit"
+            id="unit"
+            class="form-control"
+            [(ngModel)]="ingredient.unit"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="shoppingForm.invalid"
+          >
+            Add
+          </button>
+          <button class="btn btn-danger" type="button">Delete</button>
+          <button class="btn btn-primary" type="button">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
