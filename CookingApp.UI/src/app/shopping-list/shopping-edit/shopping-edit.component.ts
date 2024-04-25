@@ -12,7 +12,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class ShoppingListEditComponent implements OnInit {
   editMode = false;
   ingredient = new Ingredient(null, null, null);
-  id: number;
+  id?: number;
   constructor(
     private shoppingListService: ShoppingListService,
     private route: ActivatedRoute,
@@ -21,9 +21,11 @@ export class ShoppingListEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
-      if (this.id !== undefined) {
-        this.ingredient = this.shoppingListService.getIngredient(this.id);
+      if (params['id'] !== undefined) {
+        this.id = +params['id'];
+        this.ingredient = this.shoppingListService.getIngredientByIndex(
+          this.id
+        );
         this.editMode = true;
       }
     });
@@ -34,7 +36,7 @@ export class ShoppingListEditComponent implements OnInit {
     const ingredient = new Ingredient(value.name, value.amount, value.unit);
 
     if (this.id !== undefined) {
-      this.shoppingListService.updateIngredient(ingredient, this.id);
+      this.shoppingListService.updateIngredientByIndex(ingredient, this.id);
       this.onClear();
     } else {
       this.shoppingListService.addIngredient(ingredient);
