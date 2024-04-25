@@ -86,39 +86,74 @@
       <div class="row">
         <div class="col-xs-12" formArrayName="ingredients">
           <div
-            class="row ingredients ingredient-container"
+            class="ingredients"
             *ngFor="let ingredient of getIngredientControls(); let i = index"
             [formGroupName]="i"
           >
-            <div class="col-xs-3">
-              <label for="ingredientName">Ingredient name</label>
-              <input
-                id="ingredientName"
-                type="text"
-                class="form-control"
-                formControlName="ingredientName"
-              />
+            <div class="row">
+              <div class="col-xs-3">
+                <label for="ingredientName">Ingredient name</label>
+              </div>
+              <div class="col-xs-3">
+                <label for="ingredientAmount">Ingredient amount</label>
+              </div>
+              <div class="col-xs-4">
+                <label for="ingredientUnit">Ingredient unit (optional)</label>
+              </div>
             </div>
-            <div class="col-xs-3">
-              <label for="ingredientAmount">Ingredient amount</label>
-              <input
-                id="ingredientAmount"
-                type="number"
-                class="form-control"
-                formControlName="ingredientAmount"
-              />
-            </div>
-            <div class="col-xs-4">
-              <label for="ingredientUnit">Ingredient unit (optional)</label>
-              <input
-                id="ingredientUnit"
-                type="text"
-                class="form-control"
-                formControlName="ingredientUnit"
-              />
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger" type="button" (click)="onRemoveIngredient(i)">X</button>
+            <div class="row">
+              <div class="col-xs-3">
+                <input
+                  id="ingredientName"
+                  type="text"
+                  class="form-control"
+                  formControlName="ingredientName"
+                />
+                <span
+                  class="help-block"
+                  *ngIf="
+                    recipeForm.get(['ingredients', i, 'ingredientName'])
+                      .touched &&
+                    recipeForm.get(['ingredients', i, 'ingredientName']).invalid
+                  "
+                  >Name is required</span
+                >
+              </div>
+              <div class="col-xs-3">
+                <input
+                  id="ingredientAmount"
+                  type="number"
+                  class="form-control"
+                  formControlName="ingredientAmount"
+                />
+                <span
+                  class="help-block"
+                  *ngIf="
+                    recipeForm.get(['ingredients', i, 'ingredientAmount'])
+                      .touched &&
+                    recipeForm.get(['ingredients', i, 'ingredientAmount'])
+                      .invalid
+                  "
+                  >Amount is required and must be positive number</span
+                >
+              </div>
+              <div class="col-xs-4">
+                <input
+                  id="ingredientUnit"
+                  type="text"
+                  class="form-control"
+                  formControlName="ingredientUnit"
+                />
+              </div>
+              <div class="col-xs-2">
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="onRemoveIngredient(i)"
+                >
+                  X
+                </button>
+              </div>
             </div>
           </div>
           <div class="row">

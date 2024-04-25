@@ -14,9 +14,3 @@ input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
   margin-top: 5px;
   margin-bottom: 20px;
 }
-
-.ingredient-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
