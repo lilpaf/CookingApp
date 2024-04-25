@@ -14,7 +14,7 @@ import { DropDownDirective } from './shared/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { NumberValidatorDirective } from './shared/validators/number.validator.directive';
+import { NumberValidatorDirective } from './shared/directives/number.validator.directive';
 
 @NgModule({
   declarations: [

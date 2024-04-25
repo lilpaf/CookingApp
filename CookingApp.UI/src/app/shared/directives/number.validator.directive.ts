@@ -23,4 +23,11 @@ export class NumberValidatorDirective implements Validator {
     }
     return null;
   }
+
+  static validate(control: AbstractControl<any, any>): ValidationErrors {
+    if (control.value <= 0) {
+      return { invalidNumber: true };
+    }
+    return null;
+  }
 }
