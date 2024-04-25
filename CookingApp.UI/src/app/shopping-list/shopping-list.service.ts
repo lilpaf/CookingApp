@@ -18,7 +18,7 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  getIngredient(index: number) {
+  getIngredientByIndex(index: number) {
     const ingredient = this.ingredients[index];
     return new Ingredient(ingredient.name, ingredient.amount, ingredient.unit);
   }
@@ -28,7 +28,7 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.getIngredients());
   }
 
-  updateIngredient(ingredient: Ingredient, index: number) {
+  updateIngredientByIndex(ingredient: Ingredient, index: number) {
     this.ingredients[index] = ingredient;
     this.ingredientsChanged.next(this.getIngredients());
   }
