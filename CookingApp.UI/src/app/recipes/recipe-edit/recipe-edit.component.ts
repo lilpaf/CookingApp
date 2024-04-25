@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../models/recipe.model';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Ingredient } from '../../shared/models/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -62,7 +63,7 @@ export class RecipeEditComponent implements OnInit {
     this.recipe.name = value.name;
     this.recipe.description = value.description;
     this.recipe.imagePath = value.imagePath;
-    //this.recipe.ingredients = value.ingredients;
+    this.recipe.ingredients = this.extractFormIngredients();
 
     if (this.recipeIndex !== undefined) {
       this.recipeService.updateRecipeByIndex(this.recipe, this.recipeIndex);
@@ -89,5 +90,26 @@ export class RecipeEditComponent implements OnInit {
         ingredientUnit: new FormControl(null),
       })
     );
+  }
+
+  onRemoveIngredient(index: number) {
+    (this.recipeForm.get('ingredients') as FormArray).removeAt(index);
+  }
+
+  extractFormIngredients() {
+    const newIngredients: Ingredient[] = [];
+    const formIngredients = this.getIngredientControls();
+
+    for (let ingredient of formIngredients) {
+      newIngredients.push(
+        new Ingredient(
+          ingredient.value.ingredientName,
+          ingredient.value.ingredientAmount,
+          ingredient.value.ingredientUnit
+        )
+      );
+    }
+
+    return newIngredients;
   }
 }
