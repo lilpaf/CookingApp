@@ -4,6 +4,7 @@ import { RecipeService } from '../recipe.service';
 import { Recipe } from '../models/recipe.model';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ingredient } from '../../shared/models/ingredient.model';
+import { NumberValidatorDirective } from '../../shared/directives/number.validator.directive';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -34,10 +35,10 @@ export class RecipeEditComponent implements OnInit {
                 ingredient.name,
                 Validators.required
               ),
-              ingredientAmount: new FormControl(
-                ingredient.amount,
-                Validators.required
-              ),
+              ingredientAmount: new FormControl(ingredient.amount, [
+                Validators.required,
+                NumberValidatorDirective.validate,
+              ]),
               ingredientUnit: new FormControl(ingredient.unit),
             })
           );
@@ -86,7 +87,10 @@ export class RecipeEditComponent implements OnInit {
     (this.recipeForm.get('ingredients') as FormArray).push(
       new FormGroup({
         ingredientName: new FormControl(null, Validators.required),
-        ingredientAmount: new FormControl(null, Validators.required),
+        ingredientAmount: new FormControl(null, [
+          Validators.required,
+          NumberValidatorDirective.validate,
+        ]),
         ingredientUnit: new FormControl(null),
       })
     );
