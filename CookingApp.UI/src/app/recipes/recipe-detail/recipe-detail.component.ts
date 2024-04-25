@@ -27,4 +27,8 @@ export class RecipeDetailComponent implements OnInit {
       this.recipe = this.recipeService.getRecipeByIndex(+recipeIndex);
     });
   }
+
+  onDeleteRecipe() {
+    //ToDo pop up message to confirm delete
+  }
 }
