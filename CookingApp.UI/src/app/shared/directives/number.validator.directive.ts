@@ -18,13 +18,10 @@ import {
 })
 export class NumberValidatorDirective implements Validator {
   validate(control: AbstractControl<any, any>): ValidationErrors {
-    if (control.value <= 0) {
-      return { invalidNumber: true };
-    }
-    return null;
+    return NumberValidatorDirective.validateFunc(control);
   }
 
-  static validate(control: AbstractControl<any, any>): ValidationErrors {
+  static validateFunc(control: AbstractControl<any, any>): ValidationErrors {
     if (control.value <= 0) {
       return { invalidNumber: true };
     }

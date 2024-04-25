@@ -37,7 +37,7 @@ export class RecipeEditComponent implements OnInit {
               ),
               ingredientAmount: new FormControl(ingredient.amount, [
                 Validators.required,
-                NumberValidatorDirective.validate,
+                NumberValidatorDirective.validateFunc,
               ]),
               ingredientUnit: new FormControl(ingredient.unit),
             })
@@ -89,7 +89,7 @@ export class RecipeEditComponent implements OnInit {
         ingredientName: new FormControl(null, Validators.required),
         ingredientAmount: new FormControl(null, [
           Validators.required,
-          NumberValidatorDirective.validate,
+          NumberValidatorDirective.validateFunc,
         ]),
         ingredientUnit: new FormControl(null),
       })
