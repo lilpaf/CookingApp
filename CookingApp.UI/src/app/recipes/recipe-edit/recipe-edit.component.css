@@ -10,11 +10,13 @@ input.ng-touched.ng-invalid {
   margin-bottom: 10px;
 }
 
-.ingredient-button {
-  margin-top: 24px;
-}
-
 .ingredients {
   margin-top: 5px;
   margin-bottom: 20px;
+}
+
+.ingredient-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
