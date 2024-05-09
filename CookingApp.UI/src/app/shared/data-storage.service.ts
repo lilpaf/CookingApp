@@ -6,6 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/models/recipe.model';
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,8 +30,20 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    this.httpClient.get<Recipe[]>(this.url).subscribe((recipes) => {
-      this.recipeService.setRecipes(recipes);
-    });
+    return this.httpClient
+      .get<Recipe[]>(this.url)
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap(recipes => {
+            this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
