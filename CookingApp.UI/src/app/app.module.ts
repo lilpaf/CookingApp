@@ -17,6 +17,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { NumberValidatorDirective } from './shared/directives/number.validator.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,14 @@ import { AuthComponent } from './auth/auth.component';
     RecipeEditComponent,
     NumberValidatorDirective,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
-    BrowserModule, 
-    FormsModule, 
-    AppRoutingModule, 
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
